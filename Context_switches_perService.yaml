@@ -1,0 +1,70 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-10-21T07:43:08Z'
+  groups:
+    - uuid: dc579cd7a1a34222933f24f52a68bcd8
+      name: 'Linux servers'
+  templates:
+    - uuid: 85208f97247740349bfa6d7019beb686
+      template: 'Get CPU context switches per service on Linux. by SoKo'
+      name: 'Get CPU context switches per service on Linux. by SoKo'
+      groups:
+        - name: 'Linux servers'
+      items:
+        - uuid: 1fced56e2c73459ab9283617e19105cc
+          name: 'CPU context switches per service {$PROCESSNAME1}'
+          key: 'context.switching[{$PROCESSNAME1}]'
+          delay: 30s
+          tags:
+            - tag: Application
+              value: CPU
+          triggers:
+            - uuid: eeeba5104a7146008b09d3e6a5ce6ae9
+              expression: 'last(/Get CPU context switches per service on Linux. by SoKo/context.switching[{$PROCESSNAME1}])>1000'
+              name: 'High Context Switches for {$PROCESSNAME1}'
+              priority: HIGH
+        - uuid: cfcfe91b90734295837b9e98517f9802
+          name: 'CPU context switches per service {$PROCESSNAME2}'
+          key: 'context.switching[{$PROCESSNAME2}]'
+          delay: 30s
+          tags:
+            - tag: Application
+              value: CPU
+          triggers:
+            - uuid: 4064259deada4db4a3de355aee354f3c
+              expression: 'last(/Get CPU context switches per service on Linux. by SoKo/context.switching[{$PROCESSNAME2}])>1000'
+              name: 'High Context Switches for {$PROCESSNAME2}'
+              priority: HIGH
+        - uuid: d2a38a3d5a7e4356b932b265e687392e
+          name: 'CPU context switches per service {$PROCESSNAME3}'
+          key: 'context.switching[{$PROCESSNAME3}]'
+          delay: 30s
+          tags:
+            - tag: Application
+              value: CPU
+          triggers:
+            - uuid: 1ad9106170ff4b6b99a2c54d26d9a396
+              expression: 'last(/Get CPU context switches per service on Linux. by SoKo/context.switching[{$PROCESSNAME3}])>1000'
+              name: 'High Context Switches for {$PROCESSNAME3}'
+              priority: HIGH
+        - uuid: 0d5ab98daadd4b5fb4cb0f2503147a42
+          name: 'CPU context switches per service {$PROCESSNAME4}'
+          key: 'context.switching[{$PROCESSNAME4}]'
+          delay: 30s
+          tags:
+            - tag: Application
+              value: CPU
+          triggers:
+            - uuid: 628127d380874a0ba6d47d12bc919d81
+              expression: 'last(/Get CPU context switches per service on Linux. by SoKo/context.switching[{$PROCESSNAME4}])>1000'
+              name: 'High Context Switches for {$PROCESSNAME4}'
+              priority: HIGH
+      macros:
+        - macro: '{$PROCESSNAME1}'
+          description: 'this field was filled for test'
+        - macro: '{$PROCESSNAME2}'
+          description: 'this field was filled for test'
+        - macro: '{$PROCESSNAME3}'
+          description: 'this field was filled for test'
+        - macro: '{$PROCESSNAME4}'
+          description: 'this field was filled for test'
